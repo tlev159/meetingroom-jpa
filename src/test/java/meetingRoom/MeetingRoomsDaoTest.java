@@ -8,6 +8,8 @@ import javax.persistence.Persistence;
 
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MeetingRoomsDaoTest {
@@ -28,7 +30,7 @@ class MeetingRoomsDaoTest {
         meetingRoomsDao.save("Harmadik tárgyaló", 1, 4);
 
         List<String> anotherRooms = meetingRoomsDao.getMeetingRoomsOrderedByName();
-        System.out.println(anotherRooms);
+        assertThat(List.of("Első tárgyaló", "Harmadik tárgyaló", "Második tárgyaló"), equalTo(anotherRooms));
     }
 
     @Test
@@ -38,7 +40,7 @@ class MeetingRoomsDaoTest {
         meetingRoomsDao.save("Harmadik tárgyaló", 1, 4);
 
         List<MeetingRoom> anotherRooms = meetingRoomsDao.getMeetingRooms();
-        System.out.println(anotherRooms);
+        assertThat("Második tárgyaló", equalTo(anotherRooms.get(2).getName()));
 
     }
 }
