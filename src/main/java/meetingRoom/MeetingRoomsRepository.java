@@ -8,7 +8,7 @@ public interface MeetingRoomsRepository {
 
     List<String> getMeetingRoomsOrderedByName();
 
-    List<String> getEverySecondMeetingRoom();
+    List<MeetingRoom> getEverySecondMeetingRoom();
 
     List<MeetingRoom> getMeetingRooms();
 
